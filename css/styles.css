@@ -16,7 +16,6 @@
 
   /* Spacing */
   --padding-section: 50px;
-  --gap: 20px;
 
   /* Shadows */
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -34,7 +33,7 @@ body {
 /* Hero Section */
 .hero {
   text-align: center;
-  height: 100vh; /* 100% viewport height */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,6 +48,74 @@ body {
   background-size: 400% 400%;
   animation: gradient-animation 15s ease infinite;
   color: white;
+}
+
+//* Navbar Styles */
+.navbar {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transform: translateY(0);
+  box-sizing: border-box;
+}
+
+.navbar-container {
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 2400px;
+}
+
+.logo {
+  padding: 20px 15px;
+  font-size: var(--font-small);
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  padding: 0px 15px;
+  gap: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: var(--font-small);
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: var(--highlight-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  padding: 0px 15px;
+  flex-direction: column;
+  gap: 5px; /* Reduced gap */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px; /* Smaller size */
+  height: 3px; /* Smaller size */
+  background: var(--primary-color);
 }
 
 .hero h1 {
@@ -94,7 +161,7 @@ section:not(.visible) {
 /* Section Headers */
 section h2 {
   text-align: center;
-  margin-bottom: var(--gap);
+  margin-bottom: 20px;
   font-size: calc(var(--font-large) - 1rem);
   color: var(--secondary-color);
 }
@@ -103,18 +170,18 @@ section h2 {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap);
+  gap: 20px;
   padding: var(--padding-section);
 }
 
 .card {
   background: #fff;
-  padding: var(--gap);
+  padding: 20px;
   border-radius: 8px;
   box-shadow: var(--box-shadow);
   flex: 1;
   min-width: 300px;
-  transition: transform 0.6s ease, box-shadow 0.6s ease; /* Slower transition */
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
 
 }
 
@@ -141,9 +208,9 @@ section h2 {
 .skill-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap);
+  gap: 20px;
   justify-content: center;
-  padding: var(--gap);
+  padding: 20px;
 }
 
 .skill-grid span {
@@ -162,7 +229,7 @@ section h2 {
 /* Footer Section */
 .footer {
   text-align: center;
-  padding: var(--gap);
+  padding: 20px;
   background: var(--secondary-color);
   color: white;
   font-size: var(--font-small);
@@ -192,3 +259,24 @@ section h2 {
   color: var(--highlight-color);
 }
 
+/* Responsive for smaller screen sizes*/
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
