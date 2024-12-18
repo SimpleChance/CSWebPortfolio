@@ -6,4 +6,3 @@ build/
 temp/
 *.tmp
 !.gitignore
-package-lock.json
