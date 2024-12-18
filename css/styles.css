@@ -224,6 +224,14 @@ section h2 {
   transform: scale(1.1);
 }
 
+/* Three.js Canvas Styling */
+.three-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--secondary-color);
+}
+
 /* Footer Section */
 .footer {
   text-align: center;
