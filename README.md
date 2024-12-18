@@ -6,7 +6,7 @@ This is the repository for my personal portfolio website, hosted on GitHub Pages
 - **About Me**: A landing page with a brief introduction.
 
 ## Live Site
-[Visit the live site](https://<SimpleChance>.github.io/<CSWebPortfolio>/)
+[Visit the live site](https://SimpleChance.github.io/CSWebPortfolio/)
 
 ## Technologies Used
 - **HTML5**
