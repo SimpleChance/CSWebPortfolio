@@ -1,6 +1,7 @@
 <!-- Meta Data -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,11 +28,17 @@
       </ul>
     </div>
   </nav>
+
   <main>
-    <h1>Three.js Testing Page</h1>
-    <p>Welcome to the Three.js testing page!</p>
+    <h1>Three.js Demos</h1>
+    <p>Choose a demo to explore:</p>
+    <div id="demo-buttons">
+      <button class="demo-nav-button" data-demo="spinningCube">Spinning Cube</button>
+    </div>
   </main>
+
   <canvas id="three-canvas"></canvas>
-  <script type="module-shim" src="../static/js/experiment.js"></script>
+  <script src="../static/js/nav.js" defer></script>
+  <script type="module-shim" src="../static/js/main.js" defer></script>
 </body>
 </html>

@@ -1,12 +1,4 @@
-// Simple script to fade in sections on the landing page and toggle hamburger menu for small screens
-
-// Navbar toggle for mobile
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+// Simple script to fade in sections on the landing page
 
 // Select all sections
 const sections = document.querySelectorAll('section');
