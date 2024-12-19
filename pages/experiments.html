@@ -30,14 +30,26 @@
   </nav>
 
   <main>
-    <h1>Three.js Demos</h1>
-    <p>Choose a demo to explore:</p>
-    <div id="demo-buttons">
+    <header class="demo-header">
+      <h2>Three.js Demos</h2>
+      <p>Choose a demo to get started</p>
+    </header>
+    <!-- List of Demos -->
+    <div class="demo-list">
       <button class="demo-nav-button" data-demo="spinningCube">Spinning Cube</button>
     </div>
+    <div class="canvas-wrapper">
+      <canvas class="three-canvas" id="three-canvas"></canvas>
+    </div>
   </main>
+    <footer class="footer">
+        <p>Thanks for visiting! Connect with me:</p>
+        <ul class="footer-links">
+            <li><a href="mailto:cwjewell19@gmail.com">Email</a></li>
+            <li><a href="https://github.com/SimpleChance" target="_blank">GitHub</a></li>
+        </ul>
+    </footer>
 
-  <canvas id="three-canvas"></canvas>
   <script src="../static/js/nav.js" defer></script>
   <script type="module-shim" src="../static/js/main.js" defer></script>
 </body>

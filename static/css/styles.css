@@ -2,7 +2,8 @@
   --primary-color: #61dafb; /* Light Blue */
   --secondary-color: #282c34; /* Dark Gray */
   --background-color: #f9f9f9; /* Light Background */
-  --text-color: #333; /* Main Text Color */
+  --text-primary-color: #333; /* Main Text Color */
+  --text-secondary-color: #FFF; /* Secondary Text Color */
   --highlight-color: #21a1f1; /* Accent Color */
   --gradient-color-1: #61dafb; /* Gradient Colors */
   --gradient-color-2: #21a1f1;
@@ -26,7 +27,7 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  color: var(--text-color);
+  color: var(--text-primary--color);
   background: var(--background-color);
 }
 
@@ -47,7 +48,7 @@ body {
   );
   background-size: 400% 400%;
   animation: gradient-animation 15s ease infinite;
-  color: white;
+  color: var(--text-secondary-color);
 }
 
 .hero h1 {
@@ -61,15 +62,15 @@ body {
 
 .hero a {
   font-size: var(--font-small);
-  background: var(--primary-color);
-  color: white;
+  color: var(--text-secondary-color);
+  background: var(--highlight-color);
   padding: 10px 20px;
   border-radius: 20px;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .hero a:hover {
-  background: var(--highlight-color);
+  background: var(--primary-color);
   transform: scale(1.1);
 }
 
@@ -227,7 +228,7 @@ section h2 {
 
 .skill-grid span {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-secondary-color);
   padding: 10px 20px;
   border-radius: 20px;
   transition: transform 0.3s ease, background 0.3s ease;
@@ -238,27 +239,56 @@ section h2 {
   transform: scale(1.1);
 }
 
-/* Three.js Canvas Styling */
-.three-canvas {
+/* Demo Page Title and Subtitle */
+.demo-header {
+  text-align: center;
+}
+
+.demo-header h1 {
+  font-size: var(--font-medium);
+  color: var(--text-primary-color);
+}
+
+.demo-header p {
+  font-size: var(--font-small);
+  color: var(--text-primary-color);
+  margin-top: 40px;
+}
+
+/* Demo List */
+.demo-list {
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--secondary-color);
-  padding: 50px 50px;
+  justify-content: center;
+  gap: 15px;
 }
 
 .demo-nav-button {
   font-size: var(--font-small);
-  background: var(--secondary-color);
-  color: white;
+  background: var(--highlight-color);
+  color: var(--text-secondary-color);
   padding: 5px 10px;
   border-radius: 20px;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .demo-nav-button:hover {
-  background: var(--highlight-color);
+  background: var(--primary-color);
   transform: scale(1.1);
+}
+
+/* Three.js Canvas Styling */
+.canvas-wrapper {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.three-canvas {
+  display: block;
+  width: 90vw;
+  height: 90vh;
 }
 
 /* Footer Section */
@@ -266,7 +296,7 @@ section h2 {
   text-align: center;
   padding: 20px;
   background: var(--secondary-color);
-  color: white;
+  color: var(--text-secondary-color);
   font-size: var(--font-small);
 }
 
