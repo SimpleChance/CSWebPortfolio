@@ -1,3 +1,4 @@
+<!-- Meta Data -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Three.js Testing</title>
   <link rel="stylesheet" href="../static/css/styles.css">
+  <!-- Polyfill to enable external import maps across modern browsers-->
+  <script src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.js" async></script>
+  <!-- Import Map for Module Resolution -->
+  <script type="importmap-shim" src="../static/json/import-map.json"></script>
 </head>
+
 <body>
   <nav class="navbar">
     <div class="navbar-container">
@@ -17,7 +23,7 @@
       </button>
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="threejs.html">Three.js Testing</a></li>
+        <li><a href="experiments.html">Three.js Testing</a></li>
       </ul>
     </div>
   </nav>
@@ -26,6 +32,6 @@
     <p>Welcome to the Three.js testing page!</p>
   </main>
   <canvas id="three-canvas"></canvas>
-  <script src="../static/js/index.js"></script>
+  <script type="module-shim" src="../static/js/experiment.js"></script>
 </body>
 </html>
