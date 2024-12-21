@@ -1,6 +1,6 @@
 // Utility to load a shader from a file
 export async function loadShader(url) {
-    const basePath = window.location.origin + '/static/assets/shaders/';
+    const basePath =  window.location.origin + '/CSWebPortfolio/static/assets/shaders/';
     try {
         const response = await fetch(basePath + url);
         if (!response.ok) {
@@ -27,7 +27,7 @@ export async function loadShaders(shaderPaths) {
 
 // Example usage to preload shaders
 export async function preloadShaders() {
-    const basePath = window.location.origin + '/static/assets/shaders/';
+    const basePath = window.location.origin + '/CSWebPortfolio/static/assets/shaders/';
     const shaderPaths = {
         cubeVertex: `${basePath}cubeVertex.txt`,
         cubeFragment: `${basePath}cubeFragment.txt`,
