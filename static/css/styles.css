@@ -279,16 +279,18 @@ section h2 {
 /* Three.js Canvas Styling */
 .canvas-wrapper {
   display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   margin-bottom: 40px;
 }
 
 .three-canvas {
   display: block;
-  width: 90vw;
-  height: 90vh;
+  width: 80vw;
+  height: 80vh;
+  margin: auto;
+  border: 1px solid #ccc;
 }
 
 /* Footer Section */

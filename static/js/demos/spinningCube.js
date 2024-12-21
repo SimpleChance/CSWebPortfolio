@@ -1,36 +1,75 @@
+// spinningCube.js
 import * as THREE from 'three';
 
 export default class SpinningCubeDemo {
-  constructor(app) {
-    this.app = app;
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(75, this.app.canvas.clientWidth / this.app.canvas.clientHeight, 0.1, 1000);
-  }
+    constructor(app, shaders) {
+        this.app = app;
+        this.shaders = shaders;
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(
+            75,
+            this.app.canvas.clientWidth / this.app.canvas.clientHeight,
+            0.1,
+            1000
+        );
+        this.camera.position.z = 5;
 
-  init() {
-    this.camera.position.z = 5;
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
+        this.mousePosition = new THREE.Vector2(0, 0); // Store mouse position
 
-    const light = new THREE.PointLight(0xffffff, 1, 100);
-    light.position.set(10, 10, 10);
-    this.scene.add(light);
+        console.log('spinningCube.js: Spinning Cube Constructed');
+    }
 
-    this.animate();
-  }
+    init() {
+        // Create geometry and ShaderMaterial
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.ShaderMaterial({
+            vertexShader: this.shaders.vertexShader,
+            fragmentShader: this.shaders.fragmentShader,
+            uniforms: {
+                uMouse: { value: new THREE.Vector2(0, 0) },
+                uTime: { value: 0.0 },
+            },
+        });
 
-  animate = () => {
-    if (this.app.currentDemo !== this) return;
 
-    requestAnimationFrame(this.animate);
-    this.cube.rotation.x += 0.01;
-    this.cube.rotation.y += 0.01;
-    this.app.renderer.render(this.scene, this.camera);
-  };
+        this.cube = new THREE.Mesh(geometry, material);
+        this.scene.add(this.cube);
 
-  dispose() {
-    this.scene.clear(); // Remove all objects
-  }
+        // Add lighting
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(10, 10, 10);
+        this.scene.add(light);
+
+        // Add mouse event listeners
+        this.addMouseListeners();
+
+        console.log('spinningCube.js: Spinning Cube Initialized');
+        this.animate();
+    }
+
+    addMouseListeners() {
+        const canvas = this.app.renderer.domElement;
+        canvas.addEventListener('mousemove', (event) => {
+            const rect = canvas.getBoundingClientRect();
+            this.mousePosition.x = (event.clientX - rect.left) / rect.width * 2 - 1; // Normalize to [-1, 1]
+            this.mousePosition.y = -((event.clientY - rect.top) / rect.height * 2 - 1); // Normalize to [-1, 1]
+        });
+    }
+
+    animate = () => {
+        if (this.app.currentDemo !== this) return;
+
+        requestAnimationFrame(this.animate);
+
+        // Update time uniform
+        this.cube.material.uniforms.uTime.value = performance.now() * 0.001;
+           this.cube.material.uniforms.uMouse.value = this.mousePosition;
+        // Render the scene
+        this.app.renderer.render(this.scene, this.camera);
+    };
+
+    dispose() {
+        this.scene.clear(); // Remove all objects
+        console.log('spinningCube.js: Scene Cleared');
+    }
 }
