@@ -17,8 +17,8 @@ class DemoApp {
 
     async init() {
         // Preload shaders
-        this.shaders.vertexShader = await loadShader('cubeVertex.glsl');
-        this.shaders.fragmentShader = await loadShader('cubeFragment.glsl');
+        this.shaders.vertexShader = await loadShader('cubeVertex.txt');
+        this.shaders.fragmentShader = await loadShader('cubeFragment.txt');
 
         this.setupDemoButtons();
         this.setupResizeListener();

@@ -29,8 +29,8 @@ export async function loadShaders(shaderPaths) {
 export async function preloadShaders() {
     const basePath = window.location.origin + '/static/assets/shaders/';
     const shaderPaths = {
-        cubeVertex: `${basePath}cubeVertex.glsl`,
-        cubeFragment: `${basePath}cubeFragment.glsl`,
+        cubeVertex: `${basePath}cubeVertex.txt`,
+        cubeFragment: `${basePath}cubeFragment.txt`,
     };
 
     try {
