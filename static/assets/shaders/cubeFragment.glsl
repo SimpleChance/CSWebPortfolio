@@ -1,0 +1,45 @@
+uniform float uTime; // Time uniform
+varying vec3 vPosition; // Vertex position passed from vertex shader
+varying vec3 vNormal;   // Normal vector for face detection
+
+void main() {
+    // Determine which face the fragment belongs to based on the normal
+    vec3 localPosition;
+    if (abs(vNormal.x) > 0.99) { // Left/Right faces
+        localPosition = vec3(0.0, vPosition.y, vPosition.z);
+    } else if (abs(vNormal.y) > 0.99) { // Top/Bottom faces
+        localPosition = vec3(vPosition.x, 0.0, vPosition.z);
+    } else { // Front/Back faces
+        localPosition = vec3(vPosition.x, vPosition.y, 0.0);
+    }
+
+    // Calculate radial distance from the center of the face
+    float radius = length(localPosition.xyz); // Distance in 3D to the face from the cube center
+
+    // Create a repeating sawtooth wave pattern
+    float wave = fract((10.0 * radius - uTime * 2.5) / 3.0); // Sawtooth wave from 0 to 1
+
+    // Map wave to three equal segments
+    float segment = wave * 3.0; // Divide wave into three equal parts
+
+    // Define the three colors
+    vec3 color1 = vec3(1.0, 0.0, 0.0); // Red
+    vec3 color2 = vec3(0.0, 1.0, 0.0); // Green
+    vec3 color3 = vec3(0.0, 0.0, 1.0); // Blue
+
+    // Interpolate between colors based on the segment
+    vec3 color;
+    if (segment < 1.0) {
+        // Interpolate between Red and Green
+        color = mix(color1, color2, segment);
+    } else if (segment < 2.0) {
+        // Interpolate between Green and Blue
+        color = mix(color2, color3, segment - 1.0);
+    } else {
+        // Interpolate between Blue and Red
+        color = mix(color3, color1, segment - 2.0);
+    }
+
+    // Output the final color
+    gl_FragColor = vec4(color, 1.0);
+}

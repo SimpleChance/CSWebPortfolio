@@ -1,0 +1,45 @@
+uniform vec2 uMouse; // Mouse position normalized to [-1, 1]
+uniform float uTime; // Time uniform for dynamic effects
+
+// Standard attributes and uniforms (provided by Three.js)
+// attribute vec3 position;
+// attribute vec3 normal;
+// uniform mat4 modelMatrix;
+// uniform mat4 viewMatrix;
+// uniform mat4 projectionMatrix;
+
+// Varying to pass normal to fragment shader
+varying vec3 vNormal;
+varying vec3 vPosition;
+
+void main() {
+    // Rotation angles based on mouse position
+    float angleX = uMouse.y * 3.14159; // Rotate around X-axis
+    float angleY = uMouse.x * 3.14159; // Rotate around Y-axis
+
+    // Rotation matrix for X-axis
+    mat4 rotationY = mat4(
+        1.0,  0.0,         0.0,        0.0,
+        0.0,  cos(angleX), -sin(angleX), 0.0,
+        0.0,  sin(angleX),  cos(angleX), 0.0,
+        0.0,  0.0,         0.0,        1.0
+    );
+
+    // Rotation matrix for Y-axis
+    mat4 rotationX = mat4(
+        cos(angleY), 0.0, -sin(angleY), 0.0,
+        0.0,         1.0, 0.0,        0.0,
+        sin(angleY), 0.0, cos(angleY), 0.0,
+        0.0,         0.0, 0.0,        1.0
+    );
+
+    // Apply rotations
+    vec4 rotatedPosition = rotationY * rotationX * vec4(position, 1.0);
+
+    // Calculate final position
+    gl_Position = projectionMatrix * viewMatrix * modelMatrix * rotatedPosition;
+
+    // Pass the normal to the fragment shader
+    vNormal = normal;
+    vPosition = position;
+}
