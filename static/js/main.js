@@ -26,21 +26,6 @@ class DemoApp {
         console.log('main.js: DemoApp Initialized');
     }
 
-    resizeCanvasToDisplaySize() {
-        const width = window.innerWidth * 0.8; // Need to come up with a better way to this
-        const height = window.innerHeight * 0.8;
-
-        // Update the internal drawing buffer size
-        if (this.canvas.style.width !== width || this.canvas.style.height != height) {
-            this.canvas.width = width;
-            this.canvas.height = height;
-            this.canvas.style.width = `${width}px`;
-            this.canvas.style.height = `${height}px`;
-            this.renderer.setSize(width, height, false);
-            console.log("main.js: Canvas Style and Client Dimensions mismatch")
-        }
-    }
-
     setupDemoButtons() {
         const buttons = document.querySelectorAll('.demo-nav-button');
         buttons.forEach((button) => {
@@ -58,9 +43,23 @@ class DemoApp {
                 this.resizeCanvasToDisplaySize();
                 this.currentDemo.camera.aspect = this.canvas.clientWidth / this.canvas.clientHeight;
                 this.currentDemo.camera.updateProjectionMatrix();
-                console.log(this.canvas.clientWidth, this.canvas.clientHeight);
             }
         });
+    }
+
+    resizeCanvasToDisplaySize() {
+        const width = window.innerWidth * 0.8;
+        const height = window.innerHeight * 0.8;
+
+        // Update the internal drawing buffer size
+        if (this.canvas.style.width !== width || this.canvas.style.height != height) {
+            this.canvas.width = width;
+            this.canvas.height = height;
+            this.canvas.style.width = `${width}px`;
+            this.canvas.style.height = `${height}px`;
+            this.renderer.setSize(width, height, false);
+            console.log("main.js: Canvas resized:", this.canvas.clientWidth, this.canvas.clientHeight);
+        }
     }
 
     async loadDemo(demoName) {
