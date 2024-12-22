@@ -23,9 +23,9 @@ void main() {
     float segment = wave * 3.0; // Divide wave into three equal parts
 
     // Define the three colors
-    vec3 color1 = vec3(1.0, 0.0, 0.0); // Red
-    vec3 color2 = vec3(0.0, 1.0, 0.0); // Green
-    vec3 color3 = vec3(0.0, 0.0, 1.0); // Blue
+    vec3 color1 = vec3(0.0, 0.83, 1.0); // Candy Blue
+    vec3 color2 = vec3(0.42, 0.39, 1.0); // Purple
+    vec3 color3 = vec3(0.16, 0.17, 0.20); // Dark Gray
 
     // Interpolate between colors based on the segment
     vec3 color;
