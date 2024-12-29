@@ -27,7 +27,7 @@
         #00ffff, /* Aqua */
         #21a1f1, /* Sky Blue */
         #282c34, /* Dark Gray */
-        #ff00ff /* Magenta */
+        #6c63ff /* Purple */
     );
     --gradient-color-2: linear-gradient(90deg, #6c63ff, #00d4ff); /* Purple to Candy Blue */
     --gradient-color-3: linear-gradient(180deg, #f4f4f4, #eaeaea); /* Very Light Gradient */

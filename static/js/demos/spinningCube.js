@@ -40,6 +40,8 @@ export default class SpinningCubeDemo {
         light.position.set(10, 10, 10);
         this.scene.add(light);
 
+        this.scene.background = new THREE.Color(0xf9f9f9);
+
         // Add mouse event listeners
         this.addMouseListeners();
 
