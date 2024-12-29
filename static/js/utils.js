@@ -1,3 +1,38 @@
+// Time management class
+export class TimeManager {
+    constructor(timeStep = 0.016, maxAccumulatedTime = 0.25) {
+        this.timeStep = timeStep; // Fixed time step (16ms for ~60 updates/sec)
+        this.maxAccumulatedTime = maxAccumulatedTime; // Prevent spiral of death
+        this.accumulator = 0;
+        this.lastTime = performance.now();
+    }
+
+    // Calculates delta time and accumulates
+    update() {
+        const currentTime = performance.now();
+        const frameTime = (currentTime - this.lastTime) / 1000; // Convert to seconds
+        this.lastTime = currentTime;
+
+        // Clamp frame time to avoid large jumps
+        this.accumulator += Math.min(frameTime, this.maxAccumulatedTime);
+    }
+
+    // Advances the simulation steps and returns the number of steps to process
+    needsUpdate() {
+        return this.accumulator >= this.timeStep;
+    }
+
+    step() {
+        this.accumulator -= this.timeStep;
+        return this.timeStep;
+    }
+
+    // Optional: Get interpolation factor for rendering
+    getInterpolationFactor() {
+        return this.accumulator / this.timeStep;
+    }
+}
+
 // Utility to load a shader from a file
 export async function loadShader(url) {
     const basePath =  window.location.origin + '/CSWebPortfolio/static/assets/shaders/';
