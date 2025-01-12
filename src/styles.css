@@ -1,0 +1,417 @@
+:root {
+    /* Primary Colors */
+    --primary-color-1: #00d4ff; /* Candy Blue */
+    --primary-color-2: #00ffff; /* Aqua */
+    --primary-color-3: #FFF; /* White */
+
+    /* Secondary Colors */
+    --secondary-color-1: #282c34; /* Dark Gray */
+    --secondary-color-2: #6c63ff; /* Purple */
+    --secondary-color-3: #ff00ff; /* Magenta */
+
+    /* Background Color */
+    --background-color: #f9f9f9; /* Very Light Gray */
+
+    /* Text Colors */
+    --text-color-1: #333; /* Gray 20 */
+    --text-color-2: #FFF; /* White */
+
+    /* Highlight Colors */
+    --highlight-color-1: #ff00ff; /* Magenta */
+    --highlight-color-2: #8b78ff; /* Lavender */
+    --highlight-color-3: #6c63ff; /* Purple */
+
+    /* Gradient Colors */
+    --gradient-color-1: linear-gradient(
+        -45deg,
+        #00ffff, /* Aqua */
+        #21a1f1, /* Sky Blue */
+        #282c34, /* Dark Gray */
+        #6c63ff /* Purple */
+    );
+    --gradient-color-2: linear-gradient(90deg, #6c63ff, #00d4ff); /* Purple to Candy Blue */
+    --gradient-color-3: linear-gradient(180deg, #f4f4f4, #eaeaea); /* Very Light Gradient */
+
+    /* Gradient Highlight */
+    --gradient-highlight-color: linear-gradient(90deg, #8b78ff, #00eaff); /* Light Purple to Light Blue */
+
+    /* Font Sizes */
+    --font-large: 3rem;
+    --font-medium: 1.2rem;
+    --font-small: 0.9rem;
+
+    /* Spacing */
+    --padding-section: 50px;
+
+    /* Shadows */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color-1);
+    background: var(--background-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    color: var(--text-color-2);
+    background: var(--gradient-color-1);
+    height: 100vh;
+    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: gradient-animation 15s ease infinite;
+}
+
+.hero h1 {
+    font-size: var(--font-large);
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: var(--font-medium);
+}
+
+.hero a {
+    font-size: var(--font-small);
+    color: var(--text-color-2);
+    background: var(--gradient-color-2);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.hero a:hover {
+    background: var(--gradient-highlight-color);
+    transform: scale(1.1);
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Navbar Styles */
+.navbar-container {
+    background-color: var(--secondary-color-1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: var(--font-small);
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--primary-color-1);
+    padding: 20px 15px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    padding: 0px 15px;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: var(--font-small);
+    color: var(--primary-color-1);
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: var(--highlight-color-3);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    padding: 0px 15px;
+    gap: 5px; /* Reduced gap */
+    cursor: pointer;
+}
+
+.hamburger span {
+    background: var(--primary-color-1);
+    display: block;
+    width: 25px;
+    height: 3px;
+}
+
+/* Hidden State */
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Visible State */
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--section-index) * 0.2s);
+}
+
+section:not(.visible) {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* Section Headers */
+section h2 {
+    font-size: calc(var(--font-large) - 1rem);
+    text-align: center;
+    color: var(--secondary-color-1);
+    margin-bottom: 20px;
+}
+
+/* Card-Based Layout for Experience and Education */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px;
+}
+
+.card {
+    background: var(--primary-color-3);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    flex: 1;
+    min-width: 300px;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.card h3 {
+    color: var(--secondary-color-1);
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 10px;
+}
+
+.card ul {
+    list-style-type: square;
+    margin: 10px 0 0 20px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Skills Section */
+.skill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.skill-grid span {
+    color: var(--text-color-2);
+    background: var(--gradient-color-2);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.skill-grid span:hover {
+    background: var(--gradient-highlight-color);
+    transform: scale(1.1);
+}
+
+/* Demo Page Title and Subtitle */
+.demo-header {
+    text-align: center;
+}
+
+.demo-header h1 {
+    color: var(--text-color-1);
+    font-size: var(--font-medium);
+}
+
+.demo-header p {
+    font-size: var(--font-small);
+    color: var(--text-color-1);
+    margin-top: 40px;
+}
+
+/* Demo List */
+.demo-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.demo-nav-button {
+    font-size: var(--font-small);
+    color: var(--text-color-2);
+    background: var(--gradient-color-2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.demo-nav-button:hover {
+    background: var(--gradient-highlight-color);
+    transform: scale(1.1);
+}
+
+/* Three.js Canvas Styling */
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.three-canvas {
+    display: block;
+    width: 80vw;
+    height: 80vh;
+    margin: auto;
+}
+
+/* Footer Section */
+.footer {
+    font-size: var(--font-small);
+    text-align: center;
+    color: var(--text-color-2);
+    background: var(--secondary-color-1);
+    padding: 20px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 0;
+    gap: 10px;
+}
+
+.footer-links li {
+    display: inline;
+}
+
+.footer-links a {
+    font-size: var(--font-medium);
+    color: var(--primary-color-1);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: var(--highlight-color-3);
+}
+
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+/* Track Background */
+::-webkit-scrollbar-track {
+    background: var(--gradient-color-3);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Thumb (Draggable Handle) */
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-color-2);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Thumb Hover Effect */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-highlight-color);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Arrow Buttons */
+::-webkit-scrollbar-button {
+    background: var(--gradient-color-2);
+    border: none;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Arrow Button Hover */
+::-webkit-scrollbar-button:hover {
+  background: var(--gradient-highlight-color);
+  transform: scale(1.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons Specific to Direction */
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+    content: '▲';
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+    content: '▼';
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
+    content: '◀';
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+    content: '▶';
+}
+
+/* Responsive for smaller screen sizes*/
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: var(--secondary-color-1);
+        position: absolute;
+        top: 50px;
+        right: 15px;
+        padding: 15px;
+        border-radius: 8px;
+  }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
