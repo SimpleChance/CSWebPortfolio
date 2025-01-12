@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DemoSelector from '../components/DemoSelector';
+import ThreeCanvas from '../components/ThreeCanvas';
 
 const Experiments = () => {
+  const [currentDemo, setCurrentDemo] = useState('spinningCube'); // Default to Spinning Cube
+
+  const handleDemoSelect = (demoId) => {
+    setCurrentDemo(demoId);
+  };
+
   return (
-    <div className='experiments'>
-      <h1>Experiments Page</h1>
-      <p>This is where your interactive demos will go!</p>
+    <div>
+      <DemoSelector onDemoSelect={handleDemoSelect} />
+      <ThreeCanvas demo={currentDemo} />
     </div>
   );
-}
+};
 
 export default Experiments;

@@ -264,6 +264,7 @@ section h2 {
     display: flex;
     justify-content: center;
     gap: 15px;
+    margin-bottom: 20px;
 }
 
 .demo-nav-button {
@@ -280,20 +281,27 @@ section h2 {
     transform: scale(1.1);
 }
 
+.demo-nav-button.selected {
+    transform: scale(1.1); /* Enlarge the selected button */
+    background: var(--gradient-highlight-color); /* Highlight the selected button */
+    color: var(--text-color-2); /* Optional: change text color for better contrast */
+    font-weight: bold; /* Optional: bold text for the selected demo */
+}
+
 /* Three.js Canvas Styling */
+/* Add this to your CSS file to ensure centering of the canvas */
 .canvas-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    height: 100vh; /* Ensure it takes the full height of the viewport */
+    width: 100vw; /* Ensure it takes the full width of the viewport */
 }
 
 .three-canvas {
-    display: block;
-    width: 80vw;
-    height: 80vh;
-    margin: auto;
+    width: 100%; /* Make the canvas fill the container */
+    height: 100%; /* Make the canvas fill the container */
+    object-fit: contain; /* Ensure aspect ratio is maintained */
 }
 
 /* Footer Section */
