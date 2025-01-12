@@ -7,11 +7,9 @@ import './styles.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </React.StrictMode>
+  <HashRouter>
+    <App />
+  </HashRouter>
 );
 
 // Log metrics to the console
