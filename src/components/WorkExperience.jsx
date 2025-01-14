@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { workExperienceData } from '../data/workExperienceData';
 
-const WorkExperience = () => { // [TODO] Add IntersectionObserver to trigger animation instead of using isVisible state
+const WorkExperience = () => { // [TODO: Add IntersectionObserver to trigger animation instead of using isVisible state]
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

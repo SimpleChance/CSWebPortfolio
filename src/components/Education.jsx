@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { educationData } from '../data/educationData';
 
-const Education = () => {  // [TODO] Add IntersectionObserver to trigger animation instead of using isVisible state
+const Education = () => {  // [TODO: Add IntersectionObserver to trigger animation instead of using isVisible state]
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

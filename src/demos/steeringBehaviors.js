@@ -18,7 +18,7 @@ export default class SteeringBehaviors {
     // Mouse position to target conversion
     this.mousePosition = new THREE.Vector2(0, 0);
 
-    // Constants for agent behavior (can be updated via setters)
+    // Steering behavior parameters [TODO: Implement these as sliders]
     this.maxSpeed = maxSpeed;
     this.maxForce = maxForce;
     this.numAgents = numAgents;
@@ -62,6 +62,7 @@ export default class SteeringBehaviors {
   }
 
   init() {
+    // Demo Specific Initialization
     this.createAgents(); // Create agents initially
 
     // Add lighting and background

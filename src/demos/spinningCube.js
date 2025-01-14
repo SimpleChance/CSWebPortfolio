@@ -14,6 +14,8 @@ export default class SpinningCube {
 
     this.mousePosition = new THREE.Vector2(0, 0); // Store mouse position
 
+    this.cubes = []; // Array to store cubes
+
     console.log('spinningCube.js: Spinning Cube Constructed');
   }
 
@@ -110,19 +112,27 @@ export default class SpinningCube {
 
     `;
 
-    // Create geometry and ShaderMaterial with inline shaders
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader,
-      uniforms: {
-        uMouse: { value: new THREE.Vector2(0, 0) },
-        uTime: { value: 0.0 },
-      },
-    });
+    for (let i = 0; i < 5; i++) { // 25 cubes in total
+      for (let j = 0; j < 5; j++) {
+      // Create geometry and ShaderMaterial with inline shaders
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.ShaderMaterial({
+        vertexShader,
+        fragmentShader,
+        uniforms: {
+          uMouse: { value: new THREE.Vector2(0, 0) },
+          uTime: { value: 0.0 },
+        },
+      });
 
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
+      const cube = new THREE.Mesh(geometry, material);
+      cube.position.x = (i - 2) * 1.5; // Position each cube in a row
+      cube.position.y = (j - 2) * 1.5; // Position each cube in a column
+
+      this.cubes.push(cube);
+      this.scene.add(cube);
+      }
+    }
 
     // Add lighting
     const light = new THREE.PointLight(0xffffff, 1, 100);
@@ -138,7 +148,7 @@ export default class SpinningCube {
     this.animate();
   }
 
-  addMouseListeners() {  // [TODO] Need to extract this to a utility file
+  addMouseListeners() {  // [TODO: Need to extract this to a utility file]
     const canvas = this.app.renderer.domElement;
     canvas.addEventListener('mousemove', (event) => {
       const rect = canvas.getBoundingClientRect();
@@ -152,10 +162,11 @@ export default class SpinningCube {
 
     requestAnimationFrame(this.animate);
 
-    // Update time uniform
-    this.cube.material.uniforms.uTime.value = performance.now() * 0.001;
-    this.cube.material.uniforms.uMouse.value = this.mousePosition;
-
+    for (let i = 0; i < this.cubes.length; i++) { // Update uniforms for each cube
+      this.cubes[i].material.uniforms.uTime.value = performance.now() * 0.001;
+      this.cubes[i].material.uniforms.uMouse.value = this.mousePosition;
+    }
+    
     // Render the scene
     this.app.renderer.render(this.scene, this.camera);
   };

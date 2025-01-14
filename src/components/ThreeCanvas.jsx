@@ -9,10 +9,10 @@ const ThreeCanvas = ({ demo }) => {
   const cameraRef = useRef(null);
   const [aspectRatio, setAspectRatio] = useState(window.innerWidth / window.innerHeight);
 
-  // State for agent settings
+  // State for agent settings [Not Ideal to have this here, but it works for now]
   const [maxSpeed, setMaxSpeed] = useState(0.25);
   const [maxForce, setMaxForce] = useState(0.005);
-  const [numAgents, setNumAgents] = useState(2500);
+  const [numAgents, setNumAgents] = useState(5000);
 
   const handleResize = () => {
     const width = window.innerWidth;
