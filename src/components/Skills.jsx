@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Skills = () => {
+const Skills = () => {  // Add IntersectionObserver to trigger animation instead of using isVisible state
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

@@ -138,7 +138,7 @@ export default class SpinningCube {
     this.animate();
   }
 
-  addMouseListeners() {
+  addMouseListeners() {  // [TODO] Need to extract this to a utility file
     const canvas = this.app.renderer.domElement;
     canvas.addEventListener('mousemove', (event) => {
       const rect = canvas.getBoundingClientRect();

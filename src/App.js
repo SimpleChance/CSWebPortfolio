@@ -8,13 +8,13 @@ import Experiments from './pages/Experiments';
 const App = () => {
   return (
     <div className="app">
-      <Navbar />
+      <Navbar />  // Nav bar always rendered
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/CSWebPortfolio" element={<LandingPage />} />
         <Route path="/experiments" element={<Experiments />} />
       </Routes>
-      <Footer />
+      <Footer />  // Footer always rendered
     </div>
   );
 };

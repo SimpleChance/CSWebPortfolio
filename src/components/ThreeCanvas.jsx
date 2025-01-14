@@ -1,42 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import SpinningCube from '../demos/spinningCube';
-import SteeringBehaviors from '../demos/steeringBehaviors'; // Import the SteeringDemo
+import SteeringBehaviors from '../demos/steeringBehaviors';
 
 const ThreeCanvas = ({ demo }) => {
   const canvasRef = useRef(null);
-  const rendererRef = useRef(null); // Store renderer in ref
-  const cameraRef = useRef(null); // Store camera in ref
+  const rendererRef = useRef(null);
+  const cameraRef = useRef(null);
   const [aspectRatio, setAspectRatio] = useState(window.innerWidth / window.innerHeight);
+
+  // State for agent settings
+  const [maxSpeed, setMaxSpeed] = useState(0.25);
+  const [maxForce, setMaxForce] = useState(0.005);
+  const [numAgents, setNumAgents] = useState(2500);
 
   const handleResize = () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
-
-    // Calculate the canvas size to be 80% of the width/height
     const canvasWidth = width * 0.8;
     const canvasHeight = height * 0.8;
-
-    // Calculate the new aspect ratio based on the new width/height
     const newAspectRatio = canvasWidth / canvasHeight;
 
     if (newAspectRatio !== aspectRatio) {
       setAspectRatio(newAspectRatio);
-      
       const canvas = canvasRef.current;
       const renderer = rendererRef.current;
       const camera = cameraRef.current;
 
       if (canvas && renderer && camera) {
-        // Set the new canvas size
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
-
         renderer.setSize(canvasWidth, canvasHeight);
-
-        // Adjust the camera's aspect ratio based on the new window size
         camera.aspect = newAspectRatio;
-        camera.updateProjectionMatrix(); // Update the projection matrix after aspect ratio change
+        camera.updateProjectionMatrix();
       }
     }
   };
@@ -46,16 +42,14 @@ const ThreeCanvas = ({ demo }) => {
     if (!canvas) return;
 
     const renderer = new THREE.WebGLRenderer({ canvas });
-    renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8); // Set initial renderer size to 80% of the window
-    rendererRef.current = renderer; // Store renderer in ref
+    renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
+    rendererRef.current = renderer;
 
-    // Setup a basic background color to ensure it's rendering
-    renderer.setClearColor(0xf0f0f0, 1); // Light gray background
+    renderer.setClearColor(0xf0f0f0, 1);
 
     const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
-    cameraRef.current = camera; // Store camera in ref
+    cameraRef.current = camera;
 
-    // Setup scene and other Three.js objects
     const scene = new THREE.Scene();
     const app = {
       canvas,
@@ -69,23 +63,21 @@ const ThreeCanvas = ({ demo }) => {
     if (demo === 'spinningCube') {
       currentDemoInstance = new SpinningCube(app);
     } else if (demo === 'steeringBehaviors') {
-      currentDemoInstance = new SteeringBehaviors(app);
+      currentDemoInstance = new SteeringBehaviors(app, maxSpeed, maxForce, numAgents);
     }
 
     currentDemoInstance.init();
     app.currentDemo = currentDemoInstance;
 
-    // Add resize event listener
     window.addEventListener('resize', handleResize);
 
-    // Cleanup on unmount
     return () => {
       if (currentDemoInstance) {
         currentDemoInstance.dispose();
       }
-      window.removeEventListener('resize', handleResize); // Remove event listener on cleanup
+      window.removeEventListener('resize', handleResize);
     };
-  }, [demo, aspectRatio]); // Ensure to run effect when demo or aspectRatio changes
+  }, [demo, aspectRatio, maxSpeed, maxForce, numAgents]);
 
   return (
     <div className="canvas-wrapper">
