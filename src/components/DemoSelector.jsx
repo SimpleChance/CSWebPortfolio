@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const demoList = [
-  { id: 'spinningCube', name: 'Spinning Cube' },
-  { id: 'steeringBehaviors', name: 'Steering Behaviors' }
+  { id: 'steeringBehaviors', name: 'Steering Behaviors' },
+  { id: 'spinningCube', name: 'Spinning Cube' }
 ];
 
 const DemoSelector = ({ onDemoSelect }) => {
@@ -14,7 +14,7 @@ const DemoSelector = ({ onDemoSelect }) => {
   };
 
   return (
-    <div className="demo-selector">
+    <div className="demo-header">
       <h2>Three.js Demos</h2>
       <p>Choose a demo to get started</p>
       <div className="demo-list">

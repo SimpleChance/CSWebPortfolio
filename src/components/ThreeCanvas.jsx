@@ -12,7 +12,7 @@ const ThreeCanvas = ({ demo }) => {
   // State for agent settings [Not Ideal to have this here, but it works for now]
   const [maxSpeed, setMaxSpeed] = useState(0.25);
   const [maxForce, setMaxForce] = useState(0.005);
-  const [numAgents, setNumAgents] = useState(5000);
+  const [numAgents, setNumAgents] = useState(2500);
 
   const handleResize = () => {
     const width = window.innerWidth;
@@ -47,7 +47,7 @@ const ThreeCanvas = ({ demo }) => {
 
     renderer.setClearColor(0xf0f0f0, 1);
 
-    const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 5000);
     cameraRef.current = camera;
 
     const scene = new THREE.Scene();

@@ -248,7 +248,7 @@ section h2 {
     text-align: center;
 }
 
-.demo-header h1 {
+.demo-header h2 {
     color: var(--text-color-1);
     font-size: var(--font-medium);
 }

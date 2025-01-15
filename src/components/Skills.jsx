@@ -1,33 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
-const Skills = () => {  // [TODO: Add IntersectionObserver to trigger animation instead of using isVisible state]
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio >= 0.25) {
-            setIsVisible(true);
-          } else if (entry.intersectionRatio <= 0.15) {
-            setIsVisible(false);
-          }
-        });
-      },
-      { threshold: [0.15, 0.25] }
-    );
-
-    const section = document.querySelector('.skills');
-    if (section) {
-      observer.observe(section);
-    }
-
-    return () => {
-      if (section) {
-        observer.unobserve(section);
-      }
-    };
-  }, []);
+const Skills = () => {
+  
+  const isVisible = useIntersectionObserver('.skills');
 
   return (
     <section className={`skills ${isVisible ? 'visible' : ''}`}>

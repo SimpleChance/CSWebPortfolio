@@ -48,12 +48,12 @@ export default class SteeringBehaviors {
   createAgents() {
     this.agents = []; // Clear previous agents
     for (let i = 0; i < this.numAgents; i++) {
-      const geometry = new THREE.CircleGeometry(this.agentRadius, 8); // Create circle geometry with uniform radius
+      const geometry = new THREE.CircleGeometry(this.agentRadius, 4); // Create circle geometry with uniform radius
       const material = new THREE.MeshBasicMaterial({ color: this.agentColor });
       const agent = new THREE.Mesh(geometry, material);
 
       // Set random initial positions for each agent
-      agent.position.set(Math.random() * 10 - 5, Math.random() * 10 - 5, 0);
+      agent.position.set(Math.random() * 20 - 10, Math.random() * 20 - 10, 0);
 
       // Store the agent
       this.agents.push(agent);

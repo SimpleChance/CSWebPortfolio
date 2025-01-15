@@ -3,7 +3,7 @@ import DemoSelector from '../components/DemoSelector';
 import ThreeCanvas from '../components/ThreeCanvas';
 
 const Experiments = () => {
-  const [currentDemo, setCurrentDemo] = useState('spinningCube'); // Default to Spinning Cube
+  const [currentDemo, setCurrentDemo] = useState('steeringBehaviors'); // Default to Steering Behaviors
 
   const handleDemoSelect = (demoId) => {
     setCurrentDemo(demoId);
