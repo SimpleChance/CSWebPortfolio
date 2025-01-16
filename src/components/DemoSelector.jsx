@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 const demoList = [
   { id: 'steeringBehaviors', name: 'Steering Behaviors' },
+  { id: 'sortingDemo', name: 'Sorting Demo' },
+  // { id: 'steeringBehaviorsGPU', name: 'Steering Bahviors on GPU' },
   { id: 'spinningCube', name: 'Spinning Cube' }
 ];
 

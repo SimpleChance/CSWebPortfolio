@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import SpinningCube from '../demos/spinningCube';
 import SteeringBehaviors from '../demos/steeringBehaviors';
+import SortingDemo from '../demos/sortingDemo';
+import SteeringBehaviorsGPU from '../demos/steeringBehaviorsGPU';
 
 const ThreeCanvas = ({ demo }) => {
   const canvasRef = useRef(null);
@@ -62,7 +64,14 @@ const ThreeCanvas = ({ demo }) => {
     let currentDemoInstance;
     if (demo === 'spinningCube') {
       currentDemoInstance = new SpinningCube(app);
-    } else if (demo === 'steeringBehaviors') {
+    } 
+    else if (demo === 'sortingDemo') {
+      currentDemoInstance = new SortingDemo(app);
+    }
+    // else if (demo === 'steeringBehaviorsGPU') {
+    //   currentDemoInstance = new SteeringBehaviorsGPU(app, maxSpeed, maxForce, numAgents);
+    // } 
+    else if (demo === 'steeringBehaviors') {
       currentDemoInstance = new SteeringBehaviors(app, maxSpeed, maxForce, numAgents);
     }
 
