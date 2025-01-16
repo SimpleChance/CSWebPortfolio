@@ -14,19 +14,41 @@ export default class SortingDemo {
     );
     this.camera.position.z = 5;
 
+    this.dataSize = 10000; // Number of elements to sort (default: 10,000)
+
     this.init(); // Initialize the demo
 
     console.log('sortingDemo.js: Sorting Demo Constructed');
   }
 
-  init() {
-    // Create a cube
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
 
+  // [TODO: Implement sorting algorithms]
+  insertionSort = (arr) => {
+  }
+
+  selectionSort = (arr) => {
+  }
+
+  mergeSort = (arr) => {
+  }
+
+  bubbleSort = (arr) => {
+  }
+
+  quickSort = (arr) => {
+  }
+
+  heapSort = (arr) => {
+  }
+
+  initializeRandomData = () => {
+    const data = Array.apply(null, Array(this.dataSize)).map(function (x, i) { return i; });
+    console.log('sortingDemo.js: Random Data Initialized:', data);
+  }
+
+  init = () => {
     console.log('sortingDemo.js: Sorting Demo Initialized');
+    this.initializeRandomData(); // Initialize random data
     this.animate(); // Start the animation loop
   }
 
@@ -41,7 +63,7 @@ export default class SortingDemo {
     console.log('sortingDemo.js: Sorting Demo Animated');
   };
 
-  dispose() {
+  dispose = () => {
     this.scene.clear(); // Remove all objects
     console.log('sortingDemo.js: Scene Cleared');
   }
